@@ -9,8 +9,11 @@
 
 #ifdef WIN32
 #include <winsock2.h>
-#else
+#elif LINUX
 #include <sys/socket.h>
+#else
+extern int send(int s, const void *data, size_t length, int flags);
+extern int recv(int s, void *data, size_t size, int flags);
 #endif
 
 #ifndef SIZE_MAX
